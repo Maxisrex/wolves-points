@@ -10,7 +10,9 @@
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "axios": "^1.1.2",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.8.4",
@@ -39,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "program for arquiteture",
+  "main": "index.js",
+  "repository": "https://github.com/Maxisrex/wolves-points.git",
+  "author": "RicardoTorresits <ricardo.torresits@gmail.com>",
+  "license": "MIT"
 }
