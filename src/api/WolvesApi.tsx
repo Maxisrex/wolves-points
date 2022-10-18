@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = 'localhost:3000/api'
+const baseURL = 'localhost:4000'
 
 const wolvesApi  = axios.create({
     baseURL

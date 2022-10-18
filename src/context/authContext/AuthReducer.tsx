@@ -6,7 +6,7 @@ export interface AuthState{
  }
  
  type AuthAction =
-     |{type:'singUp',payload:{token:string, user:any}}
+     |{type:'singUp',payload:{token:string}}
      |{type:'addError', payload:string}
      |{type:'removeError'}
      |{type:'no-authenticated'}
@@ -34,8 +34,8 @@ export interface AuthState{
            ...state,
            errorMesage:'',
            status:'autheticated',
-           //token:action.payload.token,
-           user:action.payload.user  
+           token:action.payload.token,
+           //user:action.payload.user  
          }
      case 'logOut':
      case 'no-authenticated':

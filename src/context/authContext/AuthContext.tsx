@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useState } from 'react'
+import wolvesApi from '../../api/WolvesApi';
 import { AuthReducer, AuthState } from './AuthReducer';
 
 type AuthContextProps = {
@@ -9,13 +10,8 @@ type AuthContextProps = {
   token:string|null;
   modalVisible:boolean;
   status: 'checking'|'autheticated'|'not-autheticated';
-  emailLogIn:() => void; 
-  recoveryAcount : () => void;
-  goBackStart:() => void;
-  logIn:() => void;
-  logInGoogle:() => void;
+  emailLogIn:(tEmail:string,tPassword:string) => void; 
   logOut:() => void;
-  logInchange:() => void;
   ModalCloseOrOpen:() => void;
 }
 
@@ -38,20 +34,19 @@ export const AuthProvider = ({children}:any) => {
     const [state, dispatch] = useReducer(AuthReducer, authInitialState);
     const [modalVisible, setModalVisible] = useState(false)
 
-    const emailLogIn = () => {
+    const emailLogIn = async() => {
+      const resp = await wolvesApi.post('/auth/singIn',{
+        "tEmail":
+        "tPassword"
+      })
+      dispatch({
+        type:'singUp',
+        payload:{
+          token:resp.data.token
+        }
+      })
     }
 
-    const recoveryAcount = () => {
-    }
-
-    const goBackStart = () => {
-    }
-    const logIn = () =>{
-
-    }
-    const logInchange = () =>{
-
-    }
     const logOut = async () =>{
     
     }
@@ -61,9 +56,6 @@ export const AuthProvider = ({children}:any) => {
         setModalVisible(!modalVisible)
     }
 
-    const logInGoogle = async () =>{
-       
-    }
 
 
   return (
@@ -74,11 +66,6 @@ export const AuthProvider = ({children}:any) => {
       Nombre,
       modalVisible,
       emailLogIn,
-      recoveryAcount,
-      goBackStart,
-      logIn,
-      logInchange,
-      logInGoogle,
       logOut,
       ModalCloseOrOpen,
     }}>

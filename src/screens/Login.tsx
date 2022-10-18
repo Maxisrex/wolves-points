@@ -1,6 +1,19 @@
 import React from 'react'
+import {useContext} from 'react';
+import { loginResponde } from '../interface/AuthInterface';
+import { useForm } from '../hooks/useForm';
+import { AuthContext } from '../context/authContext/AuthContext';
 
 export const Login = () => {
+
+    const {emailLogIn} = useContext(AuthContext)
+
+
+    const {tEmail,tPassword,onChange} = useForm({
+        tEmail:'',
+        tPassword:''
+    });
+
   return (
     <div>
         <div>
@@ -19,19 +32,28 @@ export const Login = () => {
                         <label>
                             correo:
                         </label>
-                        <input>
+                        <input
+                            onChange={(value)=>{onChange(value,'tEmail')}}
+                        >
                         </input>
                     </div>
                     <div>
                         <label>
                             Contraseña:
                         </label>
-                        <input>
+                        <input
+                            onChange={(value)=>{onChange(value,'tPassword')}}
+                        >
                         </input>
                     </div>
                 </div>
             </div>
-            <button>
+            <button
+                onClick={emailLogIn(
+                    tEmail,
+                    tPassword
+                )}
+            >
                 Ingresar
             </button>
         </div>
