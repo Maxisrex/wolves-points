@@ -1,7 +1,6 @@
 export interface loginData {
-    email:string;
-    name:string;
-    img : string;
+    tEmail:string;
+    tPassword:string;
 }
 
 export interface loginResponde {

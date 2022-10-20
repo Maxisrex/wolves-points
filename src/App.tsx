@@ -1,9 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
+import {useContext} from 'react';
 import './App.css';
 
 import { AuthContext, AuthProvider } from './context/authContext/AuthContext';
 import { Login } from './screens/Login';
+import { Home } from './screens/Home';
+import { Route,Routes } from 'react-router-dom';
+import { ProtectdRoute } from './helpers/ProtectdRoute';
+
 
 
 const AppState=({children}:any) =>{
@@ -15,9 +20,21 @@ const AppState=({children}:any) =>{
 }
 
 const App = () => {
+
+
   return (
-    <div className="App">
-      <Login/>
+    <div className='App'>
+      <AppState>
+        <Routes>
+          <Route path='/' element={
+            <ProtectdRoute>
+              <Home/>
+            </ProtectdRoute>
+          }>
+          <Route path='login' element={<Login/>}></Route>
+          </Route>
+        </Routes>
+      </AppState>
     </div>
   );
 }
